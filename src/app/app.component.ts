@@ -38,7 +38,7 @@ import { DrawingComponent } from './drawing.component';
             </div>
         </footer>
         <aside *ngIf="infosVisibles">
-            <a href="samuelasensi.com" target="_blank">Samuel ASENSI</a> (<a href="https://github.com/sasensi/spirograph" target="_blank">code</a>)
+            <a href="http://www.samuelasensi.com" target="_blank">Samuel ASENSI</a> (<a href="https://github.com/sasensi/spirograph" target="_blank">code</a>)
         </aside>
     `,
     styles  : [],
