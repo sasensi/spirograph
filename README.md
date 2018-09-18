@@ -14,19 +14,4 @@ npm run start
 ```
 npm run build
 ```
-
-## Deploy to Github pages
-```
-npm run build:ghp
-cd dist
-git clone https://github.com/sasensi/spirograph.git
-cd spirograph
-git checkout --orphan gh-pages
-git rm -rf .
-cd ../
-mv spirograph/.git .git
-rm -rf spirograph
-git add -A .
-git commit -m "Deploy to Github page"
-git push --force origin gh-pages
 ```
