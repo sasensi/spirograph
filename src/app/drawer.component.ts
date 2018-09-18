@@ -96,10 +96,10 @@ export class DrawerComponent implements AfterViewInit
         this.outerCircle  = new paper.Path.Circle(paper.view.center, outerRadius);
         this.innerCircle  = new paper.Path.Circle(paper.view.center, outerRadius * this.innerRadiusFactor);
         this.drawingPoint = this.loadDrawingPoint();
-        const diameter    = new paper.Path.Line(this.innerCircle.bounds.bottomCenter, this.innerCircle.bounds.topCenter);
+        const radius    = new paper.Path.Line(this.innerCircle.bounds.center, this.innerCircle.bounds.topCenter);
 
         // group inner circle elements to be able to move and rotate them together
-        this.innerCircleGroup = new paper.Group([ this.innerCircle, diameter, this.drawingPoint ]);
+        this.innerCircleGroup = new paper.Group([ this.innerCircle, radius, this.drawingPoint ]);
         // place inner circle so that both circle overlaps on top
         this.innerCircleGroup.translate(this.outerCircle.bounds.topCenter.subtract(this.innerCircle.bounds.topCenter));
         // make sure matrix is not applied to child elements
@@ -142,9 +142,9 @@ export class DrawerComponent implements AfterViewInit
 
     private loadDrawingPoint (): paper.Path.Circle
     {
-        let vector     = this.innerCircle.bounds.topCenter.subtract(this.innerCircle.bounds.bottomCenter);
+        let vector     = this.innerCircle.bounds.topCenter.subtract(this.innerCircle.bounds.center);
         vector         = vector.normalize(this.drawingPointPositionFactor * vector.length);
-        const position = this.innerCircle.bounds.bottomCenter.add(vector);
+        const position = this.innerCircle.bounds.center.add(vector);
         return new paper.Path.Circle(position, 5);
     }
 }
